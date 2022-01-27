@@ -27,7 +27,7 @@ namespace MvcCoreCifradoBBDD.Helpers
         public static bool CompareArrays(byte[] a, byte[] b)
         {
             bool iguales = true;
-            if(a.Length == b.Length)
+            if(a.Length != b.Length)
             {
                 iguales = false;
             }

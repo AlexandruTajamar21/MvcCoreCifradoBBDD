@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MvcCoreCifradoBBDD.Data;
+using MvcCoreCifradoBBDD.Helpers;
+using MvcCoreCifradoBBDD.Provider;
 using MvcCoreCifradoBBDD.Repositories;
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,8 @@ namespace MvcCoreCifradoBBDD
         {
             string cadena = this.Configuration.GetConnectionString("cadenahospital");
             services.AddTransient<RepositoryUsuarios>();
+            services.AddSingleton<PathProvider>();
+            services.AddSingleton<HelperUploadFiles>();
             services.AddDbContext<UsuariosContext>(option => option.UseSqlServer(cadena));
             services.AddControllersWithViews();
         }
